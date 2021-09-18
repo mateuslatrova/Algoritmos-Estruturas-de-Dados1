@@ -1,2 +1,2 @@
-# Data-structures-Algorithms1
-Keeping track of all my activities and progress in the course MAC0121 - Algorithms and Data Structures 1, offered by the University of São Paulo(USP).
+# Algoritmos e Estruturas de Dados 1
+Aqui estão todos os projetos de programação realizados por mim na disciplina MAC0121 - Algoritmos e Estruturas de Dados, ofertada pelo Instituto de Matemática e Estatística da USP.
