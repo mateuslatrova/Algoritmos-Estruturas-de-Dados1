@@ -1,0 +1,51 @@
+$ javac -version
+javac 11.0.12
+$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1~deb9u1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+
+$ java-introcs Generator 1 10000 abcd 121 | java-introcs CosmicRays .1 > strings
+$ java-introcs Join < strings > join
+$ cat strings join | java-introcs CheckJoin
+Proposed join has 9845 chars
+Length should be 9845
+Passes length test?  Yes
+Subsequence (1st string)?  Yes
+Subsequence (2nd string)?  Yes
+$ java-introcs Generator 1 20000 abcd 121 | java-introcs CosmicRays .1 > strings
+$ time java-introcs Join < strings > join
+
+real	0m4.694s
+user	0m9.261s
+sys	0m14.469s
+$ cat strings join | java-introcs CheckJoin
+Proposed join has 19666 chars
+Length should be 19666
+Passes length test?  Yes
+Subsequence (1st string)?  Yes
+Subsequence (2nd string)?  Yes
+$ java-introcs Generator 1 40000 abcd 121 | java-introcs CosmicRays .1 > strings
+$ time java-introcs Join < strings > join
+
+real	0m16.459s
+user	0m31.954s
+sys	0m58.331s
+$ cat strings join | java-introcs CheckJoin
+Proposed join has 39347 chars
+Length should be 39347
+Passes length test?  Yes
+Subsequence (1st string)?  Yes
+Subsequence (2nd string)?  Yes
+$ java-introcs Generator 1 60000 abcd 121 | java-introcs CosmicRays .1 > strings
+$ time java-introcs Join > /dev/null < strings > join
+
+real	0m35.377s
+user	1m6.380s
+sys	1m35.757s
+$ cat strings join | java-introcs  CheckJoin
+Proposed join has 59011 chars
+Length should be 59011
+Passes length test?  Yes
+Subsequence (1st string)?  Yes
+Subsequence (2nd string)?  Yes
