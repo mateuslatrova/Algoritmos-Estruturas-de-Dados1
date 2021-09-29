@@ -1,0 +1,97 @@
+$ javac -version
+javac 11.0.7
+$ java -version
+openjdk version "11.0.7" 2020-04-14
+OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
+OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.7+10, mixed mode)
+
+$ java-introcs RandomInts 15 100000 121 | time -p java-introcs DivideBrute .
+There is no solution
+Optimal value: 222570 (sum: 667865 / want: 222621 / sum mod 3 = 2)
+0: 20034 62027 1360 88721 50458 (sum: 222600)
+1: 43167 67922 33880 24512 53214 (sum: 222695)
+2: 16169 66240 45624 41318 53219 (sum: 222570)
+real         0.65
+user         0.64
+sys          0.04
+$ java-introcs RandomInts 15 100000 121 | time -p java-introcs Divide .
+There is no solution
+0: 20034 62027 43167 16169 67922 1360 88721 33880 50458 66240 45624 41318 24512 53214 53219 (sum: 667865)
+1: (sum: 0)
+2: (sum: 0)
+Best I found (not necessarily optimal): 0 (sum: 667865 / want: 222621 / mod 3 = 2)
+real         0.21
+user         0.19
+sys          0.04
+$ java-introcs RandomInts 18 100000 1212 | time -p java-introcs DivideBrute .
+There is no solution
+Optimal value: 241657 (sum: 725013 / want: 241671 / sum mod 3 = 0)
+0: 87369 87343 17024 49949 (sum: 241685)
+1: 51690 79692 14723 14966 55158 25428 (sum: 241657)
+2: 38833 90717 27312 7071 46990 1096 27843 1809 (sum: 241671)
+real        11.66
+user        11.65
+sys          0.06
+$ java-introcs RandomInts 18 100000 1212 | time -p java-introcs Divide .
+There is no solution
+0: 87369 51690 87343 79692 14723 38833 14966 90717 55158 27312 17024 7071 46990 1096 27843 1809 49949 25428 (sum: 725013)
+1: (sum: 0)
+2: (sum: 0)
+Best I found (not necessarily optimal): 0 (sum: 725013 / want: 241671 / mod 3 = 0)
+real         0.23
+user         0.21
+sys          0.04
+$ java-introcs RandomInts 18 1000 1212 | time -p java-introcs DivideBrute .
+There is a solution
+Optimal value: 3337 (sum: 10013 / want: 3337 / sum mod 3 = 2)
+0: 369 690 343 692 158 990 96 (sum: 3338)
+1: 723 833 24 809 949 (sum: 3338)
+2: 966 717 312 71 843 428 (sum: 3337)
+real        12.71
+user        12.68
+sys          0.06
+$ java-introcs RandomInts 19 1000 1212 | time -p java-introcs DivideBrute .
+There is a solution
+Optimal value: 3505 (sum: 10515 / want: 3505 / sum mod 3 = 0)
+0: 369 690 692 312 24 990 428 (sum: 3505)
+1: 343 723 966 717 158 96 502 (sum: 3505)
+2: 833 71 843 809 949 (sum: 3505)
+real        37.89
+user        37.71
+sys          0.11
+$ java-introcs RandomInts 19 1000 1212 | time -p java-introcs Divide .
+There is a solution
+0: 369 690 717 158 24 96 949 502 (sum: 3505)
+1: 343 692 723 833 71 843 (sum: 3505)
+2: 966 312 990 809 428 (sum: 3505)
+Optimal value: 3505 (sum: 10515 / want: 3505 / mod 3 = 0)
+real         0.35
+user         0.32
+sys          0.05
+$ java-introcs RandomInts 24 100000 1212 | time -p java-introcs Divide .
+There is no solution
+0: 87369 51690 14723 38833 14966 55158 17024 1096 74616 (sum: 355475)
+1: 87343 79692 27312 7071 46990 1809 99176 6080 (sum: 355473)
+2: 90717 27843 49949 25428 20502 90692 50344 (sum: 355475)
+Best I found (not necessarily optimal): 355473 (sum: 1066423 / want: 355474 / mod 3 = 1)
+real        21.94
+user        21.92
+sys          0.09
+$ java-introcs RandomInts 24 100000 12121 | time -p java-introcs Divide .
+There is a solution
+0: 78901 37578 47239 1864 90533 82402 92872 51853 (sum: 483242)
+1: 88100 54829 39805 83279 488 82397 61783 11002 61561 (sum: 483244)
+2: 39431 58314 72838 87879 97538 99482 27760 (sum: 483242)
+Optimal value: 483242 (sum: 1449728 / want: 483242 / mod 3 = 2)
+real        10.71
+user        10.69
+sys          0.06
+$ java-introcs RandomInts 25 100000 12121 | time -p java-introcs Divide .
+There is a solution
+0: 88100 39431 58314 72838 1864 97538 82402 27760 22493 (sum: 490740)
+1: 78901 54829 47239 39805 83279 488 61783 11002 61561 51853 (sum: 490740)
+2: 37578 82397 87879 90533 99482 92872 (sum: 490741)
+Optimal value: 490740 (sum: 1472221 / want: 490740 / mod 3 = 1)
+real        31.81
+user        31.74
+sys          0.10

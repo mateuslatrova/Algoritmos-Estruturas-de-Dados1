@@ -23,11 +23,14 @@
 //import edu.princeton.cs.algs4.StdIn;
 //import edu.princeton.cs.algs4.StdOut;
 
+// Obs.: no meu computador, só consegui rodar os casos até 20k. A partir de 40k, não há
+// memória o suficiente. Tentei arranjar um jeito de consertar mas não consegui =/
+
 public class Join {
 
-    private static String LCS(String s, String t) {
-        int M = s.length();
-        int N = t.length();
+    private static int[][] lcs_matrix(char[] s, char[] t) {
+        int M = s.length;
+        int N = t.length;
 
         // opt[i][j] = length of LCS of x[i..M] and y[j..N]
         int[][] opt = new int[M+1][N+1];
@@ -35,63 +38,80 @@ public class Join {
         // compute length of LCS and all subproblems via dynamic programming
         for (int i = M-1; i >= 0; i--) {
             for (int j = N-1; j >= 0; j--) {
-                if (s.charAt(i) == t.charAt(j)) {
+                if (s[i] == t[j]) {
                     opt[i][j] = opt[i+1][j+1] + 1;
                 } else 
                     opt[i][j] = Math.max(opt[i+1][j], opt[i][j+1]);
             }
         }
 
-        //for(int i = 0; i < M+1; i++) {
-        //    for(int j = 0; j < N+1; j++) {
-        //        if(i == 0 || j == 0)
-        //            opt[i][j] = 0;
-        //        else if(s.charAt(i-1) == t.charAt(j-1))
-        //            opt[i][j] = opt[i-1][j-1] + 1;
-        //        else {
-        //            if(opt[i - 1][j] > opt[i][j - 1]) opt[i][j] = opt[i - 1][j];
-        //            else opt[i][j] = opt[i][j - 1];
-        //        }
-        //    }
-        //}
+        return opt;
+    }
 
-        for (int i = 0; i < M+1; i++) {
-            for (int j = 0; j < N+1; j++) {
-                StdOut.print(opt[i][j]+" ");
-            }
-            StdOut.println();
+    // Computes the indexes of s and t where their LCS characters are present.
+    private static int[][] lcsIndexes(char[] s, char[] t, int[][] opt) {
+        int M = s.length;
+        int N = t.length;
+        int lcsLength = opt[0][0];
+
+        String lcs = "";
+        int[][] lcsIndexes = new int[2][lcsLength];
+        int i = 0, j = 0, aux = 0;
+        while (i < M && j < N) {
+            if (s[i] == t[j] && opt[i+1][j] == opt[i][j+1]) {
+                lcsIndexes[0][aux] = i;
+                lcsIndexes[1][aux] = j;
+                i++;
+                j++;
+                aux++;
+            } else if (opt[i+1][j] > opt[i][j+1]) i++; 
+            else j++;
         }
 
-        //StringBuilder reversedLCS = new StringBuilder();
-        //int i = 0, j = 0, aux = opt[M][N];
-        //while (i > 0 && j > 0 && aux > 0) {
-        //    if (s.charAt(i-1) == t.charAt(j-1)) {
-        //        reversedLCS.append(t.charAt(j-1));
-        //        i--;
-        //        j--;
-        //        aux--;
-        //    } else if (opt[i - 1][j] > opt[i][j - 1]) i--;
-        //    else j--;
-        //}
+        return lcsIndexes;
+    }
 
-        // computing the LCS string using opt:
-        //String lcs = "";
-        //int i = 0, j = 0, ind = opt[0][0];
-        //while (i < M-1 && j < N-1) {// && ind > 0) {
-        //    if (s.charAt(i+1) == t.charAt(j+1)) {
-        //        lcs += s.charAt(i+1);
-        //        i++;
-        //        j++;
-        //        //ind--;
-        //    } else if (opt[i+1][j] > opt[i][j+1]) i++;
-        //    else j++;
-        //}
-        String lcs = "";
-        return lcs;
+    private static String cheapJoin(char[] s, char[] t, int[][] lcsIndexes) {
+        int lcsLength = lcsIndexes[0].length;
+        int sLen = s.length;
+        int tLen = t.length;
+        String cheapJoin = "";
+
+        int leftLimitS = 0;
+        int leftLimitT = 0;
+
+        for (int k = 0; k < lcsLength; k++) { // k = index for the lcsIndexes two arrays.
+            leftLimitS = lcsIndexes[0][k];
+            leftLimitT = lcsIndexes[1][k];
+
+            if (k == 0) {
+                for (int i = 0; i < leftLimitS; i++) cheapJoin += s[i];
+                for (int j = 0; j < leftLimitT; j++) cheapJoin += t[j];
+                cheapJoin += s[leftLimitS]; // appending char from LCS only once! 
+            } else {
+                for (int i = lcsIndexes[0][k-1]+1; i < leftLimitS; i++) cheapJoin += s[i];
+                for (int j = lcsIndexes[1][k-1]+1; j < leftLimitT; j++) cheapJoin += t[j];
+                cheapJoin += s[leftLimitS]; // appending char from LCS only once! 
+            }
+        }
+
+        for (int i = leftLimitS+1; i < sLen; i++) cheapJoin += s[i];
+        for (int j = leftLimitT+1; j < tLen; j++) cheapJoin += t[j];
+
+        return cheapJoin;
     }
 
     public static void main(String[] args) {
 
-        StdOut.println(LCS("acg","ggatacg"));
+        char[] s = StdIn.readLine().toCharArray();
+        char[] t = StdIn.readLine().toCharArray();
+
+        int[][] lcsMatrix = lcs_matrix(s, t);
+        int lcsLength = lcsMatrix[0][0];
+        int[][] lcsIndexes = lcsIndexes(s,t,lcsMatrix);
+
+        String cheapJoin = cheapJoin(s, t, lcsIndexes);
+
+        StdOut.println(cheapJoin);
     }
 }
