@@ -1,0 +1,72 @@
+$ javac -version
+javac 11.0.12
+$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1~deb9u1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+
+$ java-algs4 RandomSeq 30000 1000000000 121 | time -p java-algs4 Patience
+LIS: 339 elements
+real 0.38
+user 0.77
+sys 0.08
+$ java-algs4 RandomSeq 30000 1000000000 121 | time -p java-algs4 LISDP
+LIS: 339 elements
+real 12.37
+user 31.24
+sys 65.16
+$ java-algs4 RandomSeq 30000 100 121 | time -p java-algs4 Patience
+LIS: 100 elements
+real 0.40
+user 1.10
+sys 0.07
+$ java-algs4 RandomSeq 30000 100 121 | time -p java-algs4 LISDP
+LIS: 100 elements
+real 0.38
+user 0.96
+sys 0.15
+$ java-algs4 RandomSeq 40000 1000000000 121 | time -p java-algs4 Patience
+LIS: 391 elements
+real 0.51
+user 1.46
+sys 0.10
+$ java-algs4 RandomSeq 40000 1000000000 121 | time -p java-algs4 LISDP
+LIS: 391 elements
+real 20.23
+user 54.97
+sys 102.95
+$ java-algs4 RandomSeq 50000 1000000000 121 | time -p java-algs4 Patience
+LIS: 431 elements
+real 0.49
+user 1.28
+sys 0.08
+$ java-algs4 RandomSeq 50000 1000000000 121 | time -p java-algs4 LISDP
+LIS: 431 elements
+real 28.64
+user 68.04
+sys 125.62
+$ java-algs4 RandomSeq 60000 1000000000 121 | time -p java-algs4 Patience
+LIS: 478 elements
+real 0.65
+user 1.05
+sys 0.07
+$ java-algs4 RandomSeq 60000 1000000000 121 | time -p java-algs4 LISDP
+LIS: 478 elements
+real 43.44
+user 105.02
+sys 211.00
+$ java-algs4 RandomSeq 100000 1000000000 121 | time -p java-algs4 Patience
+LIS: 610 elements
+real 0.97
+user 1.40
+sys 0.09
+$ java-algs4 RandomSeq 1000000 1000000000 121 | time -p java-algs4 Patience
+LIS: 1968 elements
+real 41.09
+user 41.97
+sys 0.56
+$ java-algs4 RandomSeq 2000000 1000000000 121 | time -p java-algs4 Patience
+LIS: 2813 elements
+real 162.27
+user 164.93
+sys 3.11
