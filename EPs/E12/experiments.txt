@@ -1,0 +1,77 @@
+$ javac -version
+javac 11.0.7
+$ java -version
+openjdk version "11.0.7" 2020-04-14
+OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
+OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.7+10, mixed mode)
+
+$ time java-algs4 Anagrams < DATA/Pwords > Pwords.out
+
+real	0m1.075s
+user	0m1.534s
+sys	0m0.295s
+$ time java-algs4 Anagrams < DATA/500k_words > 500k_words.out
+
+real	0m2.166s
+user	0m3.489s
+sys	0m0.636s
+$ java-algs4 Generator 10000 5 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | wc -l ; rm tmp
+    1628
+
+real	0m0.354s
+user	0m0.430s
+sys	0m0.085s
+$ java-algs4 Generator 10000 5 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | md5 ; rm tmp
+3aecfe61a1d81625aa79ee7536c5ce11
+
+real	0m0.334s
+user	0m0.414s
+sys	0m0.075s
+$ java-algs4 Generator 100000 6 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | wc -l ; rm tmp
+    4768
+
+real	0m0.750s
+user	0m1.141s
+sys	0m0.228s
+$ java-algs4 Generator 100000 6 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | md5 ; rm tmp
+c7adadaa8c106fe48325d217eef00924
+
+real	0m0.805s
+user	0m1.178s
+sys	0m0.246s
+$ java-algs4 Generator 1000000 7 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | wc -l ; rm tmp
+   11288
+
+real	0m3.665s
+user	0m5.250s
+sys	0m1.177s
+$ java-algs4 Generator 1000000 7 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | md5 ; rm tmp
+5da45da689e88456c7667db6974b6710
+
+real	0m3.578s
+user	0m4.924s
+sys	0m1.144s
+$ java-algs4 Generator 10000000 8 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | wc -l ; rm tmp
+   24203
+
+real	0m30.239s
+user	0m52.707s
+sys	0m10.755s
+$ java-algs4 Generator 10000000 8 0123456789 121 > tmp ; time java-algs4 Anagrams < tmp | md5 ; rm tmp
+6f76044ed3eb76bbd470e7155a686efa
+
+real	0m30.132s
+user	0m55.579s
+sys	0m10.239s
+$ java-algs4 Generator 10000000 8 0123456789 121 > tmp ; time java-algs4 Anagrams 1000 < tmp | wc -l ; rm tmp
+    2744
+
+real	0m22.493s
+user	0m46.505s
+sys	0m5.374s
+$ java-algs4 Generator 10000000 8 0123456789 121 > tmp ; time java-algs4 Anagrams 1000 < tmp | md5 ; rm tmp
+8b2b116d4fb65a54d2bf0d57aeb82368
+
+real	0m23.194s
+user	0m46.436s
+sys	0m5.121s

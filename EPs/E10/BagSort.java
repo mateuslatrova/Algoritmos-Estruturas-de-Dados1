@@ -31,11 +31,11 @@ import edu.princeton.cs.algs4.StdOut;
 public class BagSort
 {
     public static void sort(Comparable[] a) {
-	BagVariant b = new BagVariant();
-	for (Comparable x : a) b.add(x);  // foreach works for arrays
-	b.sort();
-	int i = 0;
-	for (Object x : b) a[i++] = (Comparable) x;
+		BagVariant b = new BagVariant();
+		for (Comparable x : a) b.add(x);  // foreach works for arrays
+		b.sort();
+		int i = 0;
+		for (Object x : b) a[i++] = (Comparable) x;
     }
     
     public static void main(String[] args)

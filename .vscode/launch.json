@@ -1,0 +1,50 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java-algs4",
+            "name": "Launch GenerateAndMatch",
+            "request": "launch",
+            "mainClass": "GenerateAndMatch",
+            "projectName": "Algoritmos-Estruturas-de-Dados1_667e82b8",
+            "args": ["1000000", "1000000", "1212021"]
+        },
+        {
+            "type": "java",
+            "name": "Launch Merge",
+            "request": "launch",
+            "mainClass": "Merge",
+            "projectName": "Algoritmos-Estruturas-de-Dados1_667e82b8"
+        },
+        {
+            "type": "java",
+            "name": "Launch MergeX",
+            "request": "launch",
+            "mainClass": "MergeX",
+            "projectName": "Algoritmos-Estruturas-de-Dados1_667e82b8"
+        },
+        {
+            "type": "java",
+            "name": "Launch NutsAndBolts",
+            "request": "launch",
+            "mainClass": "NutsAndBolts",
+            "projectName": "Algoritmos-Estruturas-de-Dados1_667e82b8"
+        },
+        {
+            "type": "java",
+            "name": "Launch Pair",
+            "request": "launch",
+            "mainClass": "Pair",
+            "projectName": "Algoritmos-Estruturas-de-Dados1_667e82b8"
+        }
+    ]
+}
